@@ -1,3 +1,7 @@
+# basic-shop
+
+A basic online shop with an API and front-end
+
 # How to build and run
 
 ## Development
