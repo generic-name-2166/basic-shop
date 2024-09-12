@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools >= 74.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "basic_shop"
+version = "0.1.0"
+dependencies = [
+    "Django >= 5.1",
+    "djangorestframework >= 3.15",
+]
+requires-python = ">=3.12"
+
+[project.optional-dependencies]
+linting = [
+    "ruff >= 0.6",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py312"

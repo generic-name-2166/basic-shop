@@ -1,0 +1,16 @@
+# IDEs and editors
+.vscode/
+.idea/
+
+# Back-end
+## Python
+__pycache__/
+venv/
+*.egg-info
+### Formatter
+.ruff_cache/
+### Django
+staticfiles/
+secret.txt
+#### Database
+*.sqlite3
