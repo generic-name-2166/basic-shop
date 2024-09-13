@@ -7,6 +7,7 @@
 __pycache__/
 venv/
 *.egg-info
+typings/
 ### Formatter
 .ruff_cache/
 ### Django

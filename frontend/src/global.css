@@ -1,0 +1,64 @@
+body {
+  overflow-y: scroll;
+}
+
+#app {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "main main aside";
+  gap: 1rem;
+}
+
+header {
+  grid-area: header;
+}
+
+main {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.product {
+  aspect-ratio: 1 / 1;
+  border: 0.2rem solid black;
+  display: grid;
+  grid-template-areas:
+    "name price"
+    "desc desc";
+
+  * {
+    margin: auto;
+  }
+}
+
+.name {
+  grid-area: name;
+}
+
+.price {
+  grid-area: price;
+}
+
+.description {
+  grid-area: desc;
+}
+
+aside {
+  grid-area: aside;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+
+  > label {
+    margin: 0.5rem;
+  }
+}
+
+.submit {
+  margin: 0.5rem 0 0.5rem 0;
+}
