@@ -9,4 +9,4 @@ type Data = dict[str, Any]
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ["id", "name", "description", "price"]
+        fields = ["name", "description", "price"]

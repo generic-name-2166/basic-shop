@@ -1,45 +1,23 @@
-from django.http import HttpResponse, JsonResponse, HttpRequest
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.parsers import JSONParser
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.request import Request
+from rest_framework.response import Response
 from .models import Product
 from .serializers import ProductSerializer
 
 
-@csrf_exempt
-def product_list(request: HttpRequest):
+@api_view(["GET", "POST"])
+def product_list(request: Request) -> Response:
     if request.method == "GET":
         snippets = Product.objects.all()
         serializer = ProductSerializer(snippets, many=True)
-        return JsonResponse(serializer.data, safe=False)
+        return Response(serializer.data)
 
     elif request.method == "POST":
-        data = JSONParser().parse(request)  # type: ignore
-        serializer = ProductSerializer(data=data)
+        serializer = ProductSerializer(data=request.data)  # type: ignore
         if serializer.is_valid():
             serializer.save()  # type: ignore
-            return JsonResponse(serializer.data, status=201)
-        return JsonResponse(serializer.errors, status=400)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-@csrf_exempt
-def product_detail(request: HttpRequest, pk: int):
-    try:
-        snippet = Product.objects.get(pk=pk)
-    except Product.DoesNotExist:
-        return HttpResponse(status=404)
-
-    if request.method == "GET":
-        serializer = ProductSerializer(snippet)
-        return JsonResponse(serializer.data)
-
-    elif request.method == "PUT":
-        data = JSONParser().parse(request)  # type: ignore
-        serializer = ProductSerializer(snippet, data=data)
-        if serializer.is_valid():
-            serializer.save()  # type: ignore
-            return JsonResponse(serializer.data)
-        return JsonResponse(serializer.errors, status=400)
-
-    elif request.method == "DELETE":
-        snippet.delete()
-        return HttpResponse(status=204)
+    raise BaseException("unreachable")
