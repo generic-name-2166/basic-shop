@@ -11,27 +11,16 @@ cd backend
 python -m venv venv
 venv/Scripts/Activate.ps1  # venv/bin/activate
 pip install -e ".[linting]"
-cd ../frontend
-bun install
-bun run build
 cd ../backend/src/basic_shop
 python manage.py migrate
 python manage.py runserver
-# and go to http://localhost:8000/api/products
-```
-
-To develop the front end
-
-```bash
-# Run Django dev server in another terminal
-cd backend
-venv/Scripts/Activate.ps1
-cd src/basic_shop
-python manage.py runserver
-#---#
+# available on http://localhost:8000/api/products
+# Run back end and front end in separate terminals
 cd frontend
-bun run dev
-# and go to http://localhost:5173
+npm install
+npm run build
+npm run preview
+# and go to http://localhost:4173
 ```
 
 # Notice
