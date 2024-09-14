@@ -28,4 +28,5 @@ This project has the following dependencies
 
 - `Django`
 - `djangorestframework`
+- `caddy`
 - and others

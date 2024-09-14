@@ -1,0 +1,12 @@
+:8001 
+
+handle {
+    root ./frontend/dist
+    file_server {
+        precompressed zstd br gzip
+    }
+}
+
+handle /api*  {
+    reverse_proxy localhost:8000
+}
