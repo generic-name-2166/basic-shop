@@ -1,0 +1,20 @@
+services:
+  basic_shop_backend:
+    image: basic-shop-backend
+    pull_policy: never
+    container_name: basic-shop-backend
+    build:
+      context: ./backend/
+      dockerfile: Dockerfile
+      target: runner
+  
+  basic_shop_frontend:
+    image: basic-shop-frontend
+    pull_policy: never
+    container_name: basic-shop-frontend
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
+      target: runner
+    ports:
+      - 8001:8001

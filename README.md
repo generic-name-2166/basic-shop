@@ -4,6 +4,12 @@ A basic online shop with an API and front-end
 
 # How to build and run
 
+## With Docker 
+
+```bash
+docker compose up --build
+```
+
 ## Development
 
 ```bash

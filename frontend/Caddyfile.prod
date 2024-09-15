@@ -1,0 +1,12 @@
+:8001 
+
+handle {
+    root ./
+    file_server {
+        precompressed zstd br gzip
+    }
+}
+
+handle /api*  {
+    reverse_proxy basic-shop-backend:8000
+}
