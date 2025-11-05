@@ -1,6 +1,8 @@
 # basic-shop
 
-A basic online shop with an API and front-end
+A basic CRUD app of an online shop with an API a and front-end
+
+![Screenshot](screenshot.png)
 
 # How to build and run
 
@@ -8,6 +10,8 @@ A basic online shop with an API and front-end
 
 ```bash
 docker compose up --build
+# front-end http://localhost:8001/
+# back-end  http://localhost:8000/
 ```
 
 ## Development
